@@ -11,7 +11,7 @@ You can import the GPG key from this mirror, and the repositories will work.
 Run the following command in your terminal to download the key and save it to the keyring:
 
 ```bash
-curl -fsSL https://githubusercontent.com/galek/cloudflare.pkg_keys.mirror/main/<KEY_FILENAME>.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+curl -fsSL https://githubusercontent.com/galek/cloudflare.pkg_keys.mirror/main/cloudflare-warp-archive-keyring.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
 ```
 
 ### 2. Add the repository (if not added yet)
