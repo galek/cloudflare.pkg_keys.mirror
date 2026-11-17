@@ -4,6 +4,9 @@
 In Russia, the Cloudflare WARP website is blocked and unavailable over TCP/HTTP. 
 This is a problem because DPI (TSPU) blocks direct access to the repository. On the other hand, Cloudflare also blocks Russian clients, resulting in a 504 error.
 
+Original key source (accessible outside Russia or via proxy/VPN):  
+`https://pkg.cloudflareclient.com/pubkey.gpg`
+
 ## Solution
 You can import the GPG key from this mirror, and the repositories will work.
 
@@ -14,14 +17,21 @@ Run the following command in your terminal to download the key and save it to th
 curl -fsSL https://githubusercontent.com/galek/cloudflare.pkg_keys.mirror/main/cloudflare-warp-archive-keyring.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
 ```
 
-### 2. Add the repository (if not added yet)
+### 2. Verify the key (optional)
+To make sure the imported key matches the official Cloudflare Package Repository key (`support@cloudflare.com`), you can check its fingerprint:
+
+```bash
+gpg --show-keys /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+```
+
+### 3. Add the repository (if not added yet)
 Add the Cloudflare WARP repository to your APT sources list:
 
 ```bash
 echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://cloudflareclient.com \$(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
 ```
 
-### 3. Update packages and install WARP
+### 4. Update packages and install WARP
 Update your package list and install the client:
 
 ```bash
